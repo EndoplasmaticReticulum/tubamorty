@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A86BA8CF1E2FA38900F481F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BA8CE1E2FA38900F481F2 /* AppDelegate.swift */; };
+		A86BA8D71E2FA38900F481F2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BA8D61E2FA38900F481F2 /* GameViewController.swift */; };
+		A86BA8DA1E2FA38900F481F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86BA8D81E2FA38900F481F2 /* Main.storyboard */; };
+		A86BA8DC1E2FA38900F481F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A86BA8DB1E2FA38900F481F2 /* Assets.xcassets */; };
+		A86BA8DF1E2FA38900F481F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86BA8DD1E2FA38900F481F2 /* LaunchScreen.storyboard */; };
+		A86BA8E91E2FA4C700F481F2 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BA8E81E2FA4C700F481F2 /* MainScene.swift */; };
+		A86BA8EB1E2FA8B700F481F2 /* SwipeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BA8EA1E2FA8B700F481F2 /* SwipeTarget.swift */; };
+		A86BA8F31E2FBC3D00F481F2 /* Morty 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A86BA8F21E2FBC3D00F481F2 /* Morty 1.png */; };
+		A87C7F2E1E30EFF700752723 /* CutLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C7F2D1E30EFF700752723 /* CutLine.swift */; };
+		A87C7F331E3111D900752723 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C7F321E3111D900752723 /* PhysicsCategory.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A86BA8CB1E2FA38900F481F2 /* tubamorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tubamorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86BA8CE1E2FA38900F481F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = tubamorty/AppDelegate.swift; sourceTree = "<group>"; };
+		A86BA8D61E2FA38900F481F2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A86BA8D91E2FA38900F481F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A86BA8DB1E2FA38900F481F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = tubamorty/Assets.xcassets; sourceTree = "<group>"; };
+		A86BA8DE1E2FA38900F481F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A86BA8E01E2FA38900F481F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = tubamorty/Info.plist; sourceTree = "<group>"; };
+		A86BA8E81E2FA4C700F481F2 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		A86BA8EA1E2FA8B700F481F2 /* SwipeTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTarget.swift; sourceTree = "<group>"; };
+		A86BA8F21E2FBC3D00F481F2 /* Morty 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Morty 1.png"; path = "Textures/Morty 1.png"; sourceTree = "<group>"; };
+		A87C7F2D1E30EFF700752723 /* CutLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutLine.swift; sourceTree = "<group>"; };
+		A87C7F321E3111D900752723 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A86BA8C81E2FA38900F481F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A86BA8C21E2FA38900F481F2 = {
+			isa = PBXGroup;
+			children = (
+				A86BA8CD1E2FA38900F481F2 /* tubamorty */,
+				A86BA8E01E2FA38900F481F2 /* Info.plist */,
+				A86BA8CE1E2FA38900F481F2 /* AppDelegate.swift */,
+				A86BA8DB1E2FA38900F481F2 /* Assets.xcassets */,
+				A86BA8CC1E2FA38900F481F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A86BA8CC1E2FA38900F481F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A86BA8CB1E2FA38900F481F2 /* tubamorty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A86BA8CD1E2FA38900F481F2 /* tubamorty */ = {
+			isa = PBXGroup;
+			children = (
+				A86BA8D61E2FA38900F481F2 /* GameViewController.swift */,
+				A86BA8E81E2FA4C700F481F2 /* MainScene.swift */,
+				A87C7F2A1E2FF91700752723 /* Swipe Targets */,
+				A87C7F311E3111BE00752723 /* Categories */,
+				A87C7F2C1E30EFC400752723 /* Cut Line */,
+				A87C7F2B1E30E9BA00752723 /* Storyboards */,
+				A86BA8F11E2FBC2C00F481F2 /* Textures */,
+			);
+			path = tubamorty;
+			sourceTree = "<group>";
+		};
+		A86BA8F11E2FBC2C00F481F2 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				A86BA8F21E2FBC3D00F481F2 /* Morty 1.png */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		A87C7F2A1E2FF91700752723 /* Swipe Targets */ = {
+			isa = PBXGroup;
+			children = (
+				A86BA8EA1E2FA8B700F481F2 /* SwipeTarget.swift */,
+			);
+			name = "Swipe Targets";
+			sourceTree = "<group>";
+		};
+		A87C7F2B1E30E9BA00752723 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A86BA8DD1E2FA38900F481F2 /* LaunchScreen.storyboard */,
+				A86BA8D81E2FA38900F481F2 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A87C7F2C1E30EFC400752723 /* Cut Line */ = {
+			isa = PBXGroup;
+			children = (
+				A87C7F2D1E30EFF700752723 /* CutLine.swift */,
+			);
+			name = "Cut Line";
+			sourceTree = "<group>";
+		};
+		A87C7F311E3111BE00752723 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A87C7F321E3111D900752723 /* PhysicsCategory.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A86BA8CA1E2FA38900F481F2 /* tubamorty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A86BA8E31E2FA38900F481F2 /* Build configuration list for PBXNativeTarget "tubamorty" */;
+			buildPhases = (
+				A86BA8C71E2FA38900F481F2 /* Sources */,
+				A86BA8C81E2FA38900F481F2 /* Frameworks */,
+				A86BA8C91E2FA38900F481F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tubamorty;
+			productName = tubamorty;
+			productReference = A86BA8CB1E2FA38900F481F2 /* tubamorty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A86BA8C31E2FA38900F481F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "TU Bergakademie Freiberg";
+				TargetAttributes = {
+					A86BA8CA1E2FA38900F481F2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 76MM9LH8FK;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A86BA8C61E2FA38900F481F2 /* Build configuration list for PBXProject "tubamorty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A86BA8C21E2FA38900F481F2;
+			productRefGroup = A86BA8CC1E2FA38900F481F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A86BA8CA1E2FA38900F481F2 /* tubamorty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A86BA8C91E2FA38900F481F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86BA8F31E2FBC3D00F481F2 /* Morty 1.png in Resources */,
+				A86BA8DA1E2FA38900F481F2 /* Main.storyboard in Resources */,
+				A86BA8DC1E2FA38900F481F2 /* Assets.xcassets in Resources */,
+				A86BA8DF1E2FA38900F481F2 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A86BA8C71E2FA38900F481F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86BA8E91E2FA4C700F481F2 /* MainScene.swift in Sources */,
+				A87C7F2E1E30EFF700752723 /* CutLine.swift in Sources */,
+				A86BA8D71E2FA38900F481F2 /* GameViewController.swift in Sources */,
+				A86BA8CF1E2FA38900F481F2 /* AppDelegate.swift in Sources */,
+				A86BA8EB1E2FA8B700F481F2 /* SwipeTarget.swift in Sources */,
+				A87C7F331E3111D900752723 /* PhysicsCategory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A86BA8D81E2FA38900F481F2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86BA8D91E2FA38900F481F2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A86BA8DD1E2FA38900F481F2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86BA8DE1E2FA38900F481F2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A86BA8E11E2FA38900F481F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A86BA8E21E2FA38900F481F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A86BA8E41E2FA38900F481F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76MM9LH8FK;
+				INFOPLIST_FILE = tubamorty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TUBAF.tubamorty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A86BA8E51E2FA38900F481F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76MM9LH8FK;
+				INFOPLIST_FILE = tubamorty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TUBAF.tubamorty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A86BA8C61E2FA38900F481F2 /* Build configuration list for PBXProject "tubamorty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86BA8E11E2FA38900F481F2 /* Debug */,
+				A86BA8E21E2FA38900F481F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A86BA8E31E2FA38900F481F2 /* Build configuration list for PBXNativeTarget "tubamorty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86BA8E41E2FA38900F481F2 /* Debug */,
+				A86BA8E51E2FA38900F481F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A86BA8C31E2FA38900F481F2 /* Project object */;
+}
