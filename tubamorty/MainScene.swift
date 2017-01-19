@@ -203,7 +203,10 @@ class MainScene: SKScene
         {
         default:
             
-            return []
+            let morty = SwipeTargetMorty(image: MainScene.selectRandomImage(fromImages: SwipeTargetMorty.mortyImages), color: SKColor.clear, size: CGSize(width: 100, height: 100), launchTime: self.currentTime + 1)
+            morty.position = CGPoint(x: 0, y: -0.5 * (self.size.height + morty.size.height))
+            
+            return [morty]
         }
     }
     
