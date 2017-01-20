@@ -16,17 +16,22 @@ class MainScene: SKScene
     //The current time:
     private var currentTime: TimeInterval = 0
     
-    //All the targets that are currently around:
-    private var targets = [SwipeTarget]()
-    
-    //The cut line:
-    private let cutLine = CutLine()
-    
     //The background:
     private let background = SKSpriteNode(imageNamed: "Background")
     
     //The label for Lost, Won etc.:
     private let label = SKLabelNode(fontNamed: "Chalkduster")
+    
+    //The walls:
+    private let leftWall = SKNode()
+    private let rightWall = SKNode()
+    private let topWall = SKNode()
+    
+    //The cut line:
+    private let cutLine = CutLine()
+    
+    //All the targets that are currently around:
+    private var targets = [SwipeTarget]()
     
     //In which wave are we currently?
     private var waveCounter = 0
@@ -82,9 +87,15 @@ class MainScene: SKScene
         
         self.addChild(self.label)
         
+        //Add walls:
+        self.addChild(self.leftWall)
+        self.addChild(self.rightWall)
+        self.addChild(self.topWall)
+        
         //Add cutline:
         self.cutLine.strokeColor = SKColor(red: 0.85, green: 0, blue: 0, alpha: 0.3)
         self.cutLine.lineWidth = 20
+        self.cutLine.lineJoin = .round
         self.cutLine.lineCap = .round
         
         self.addChild(self.cutLine)
@@ -114,6 +125,34 @@ class MainScene: SKScene
         
         //Set background size:
         self.background.size = self.size
+        
+        //Set walls:
+        //Left:
+        let leftPhysics = SKPhysicsBody(edgeFrom: CGPoint(x: -0.5 * self.size.width, y: -0.5 * self.size.height), to: CGPoint(x: -0.5 * self.size.width, y: 0.5 * self.size.height))
+        
+        leftPhysics.affectedByGravity = false
+        leftPhysics.categoryBitMask = PhysicsCategory.Wall
+        leftPhysics.collisionBitMask = PhysicsCategory.None
+        
+        self.leftWall.physicsBody = leftPhysics
+        
+        //Right:
+        let rightPhysics = SKPhysicsBody(edgeFrom: CGPoint(x: 0.5 * self.size.width, y: -0.5 * self.size.height), to: CGPoint(x: 0.5 * self.size.width, y: 0.5 * self.size.height))
+        
+        rightPhysics.affectedByGravity = false
+        rightPhysics.categoryBitMask = PhysicsCategory.Wall
+        rightPhysics.collisionBitMask = PhysicsCategory.None
+        
+        self.rightWall.physicsBody = rightPhysics
+        
+        //Top:
+        let topPhysics = SKPhysicsBody(edgeFrom: CGPoint(x: -0.5 * self.size.width, y: 0.5 * self.size.height), to: CGPoint(x: 0.5 * self.size.width, y: 0.5 * self.size.height))
+        
+        topPhysics.affectedByGravity = false
+        topPhysics.categoryBitMask = PhysicsCategory.Wall
+        topPhysics.collisionBitMask = PhysicsCategory.None
+        
+        self.topWall.physicsBody = topPhysics
     }
     
     override func update(_ currentTime: TimeInterval)
@@ -123,9 +162,6 @@ class MainScene: SKScene
         
         //Save the current time:
         self.currentTime = currentTime
-        
-        //Draw the cut line:
-        self.cutLine.drawPath()
         
         //Are we paused?
         guard !self.gamePaused else

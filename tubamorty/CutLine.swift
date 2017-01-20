@@ -26,7 +26,8 @@ class CutLine: SKShapeNode
         return sqrt(pow(Double(point1.x - point2.x), 2) + pow(Double(point1.y - point2.y), 2))
     }
     
-    func drawPath()
+    //Rebuild the path that is constructed from the points:
+    private func updatePath()
     {
         //Specify the path:
         let path = CGMutablePath()
@@ -90,13 +91,20 @@ class CutLine: SKShapeNode
         self.cutLinePoints += points
         self.cutLinePoints = [CGPoint](self.cutLinePoints.suffix(self.maxCutLinePointCount))
         
+        //Update the path:
+        updatePath()
+        
         return points
     }
     
     //Finalize the cut:
     func endCut()
     {
+        //Clear the cut line points:
         self.cutLinePoints.removeAll()
         self.lastCutLinePoint = nil
+        
+        //Update the path:
+        updatePath()
     }
 }
