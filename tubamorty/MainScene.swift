@@ -9,7 +9,10 @@
 import SpriteKit
 
 class MainScene: SKScene
-{    
+{
+    //Have we already done the initialization?
+    private var isInitialized = false
+    
     //The current time:
     private var currentTime: TimeInterval = 0
     
@@ -18,6 +21,12 @@ class MainScene: SKScene
     
     //The cut line:
     private let cutLine = CutLine()
+    
+    //The background:
+    private let background = SKSpriteNode(imageNamed: "Background")
+    
+    //The label for Lost, Won etc.:
+    private let label = SKLabelNode(fontNamed: "Chalkduster")
     
     //In which wave are we currently?
     private var waveCounter = 0
@@ -29,8 +38,8 @@ class MainScene: SKScene
     //That's a safe death, no chance to collect some lifes on the fly:
     private var blownUp = false
     
-    //Did we win or lose?
-    private var gameOver = false
+    //Is the game currently running?
+    private var gamePaused = false
     
     private class func selectRandomImage(fromImages images: [UIImage]) -> UIImage
     {
@@ -57,13 +66,31 @@ class MainScene: SKScene
     
     private func commonInit()
     {
-        //Set background:
-        self.backgroundColor = UIColor.gray
+        guard !self.isInitialized else
+        {
+            return
+        }
         
-        //Style cutline:
+        //Add background:
+        self.background.position = CGPoint(x: 0, y: 0)
+        self.addChild(self.background)
+        
+        //Add label:
+        self.label.position = CGPoint(x: 0, y: 0)
+        self.label.fontSize = 65
+        self.label.isHidden = true
+        
+        self.addChild(self.label)
+        
+        //Add cutline:
         self.cutLine.strokeColor = SKColor(red: 0.85, green: 0, blue: 0, alpha: 0.3)
         self.cutLine.lineWidth = 20
         self.cutLine.lineCap = .round
+        
+        self.addChild(self.cutLine)
+        
+        //We are done:
+        self.isInitialized = true
     }
     
     private func processHits(atPoints points: [CGPoint])
@@ -84,6 +111,9 @@ class MainScene: SKScene
         
         //Fix anchor point at center:
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        //Set background size:
+        self.background.size = self.size
     }
     
     override func update(_ currentTime: TimeInterval)
@@ -95,10 +125,10 @@ class MainScene: SKScene
         self.currentTime = currentTime
         
         //Draw the cut line:
-        self.cutLine.draw(inScene: self)
+        self.cutLine.drawPath()
         
-        //Are we done?
-        guard !self.gameOver else
+        //Are we paused?
+        guard !self.gamePaused else
         {
             return
         }
@@ -116,7 +146,7 @@ class MainScene: SKScene
             //Did we win?
             if self.targets.count == 0
             {
-                self.gameOver = true
+                self.gamePaused = true
                 gameWon()
                 
                 return
@@ -128,7 +158,7 @@ class MainScene: SKScene
         {
             self.targets.forEach({ $0.removeFromParent() })
             self.targets.removeAll()
-            self.gameOver = true
+            self.gamePaused = true
             gameLost(byBlowUp: self.blownUp)
             
             return
@@ -203,10 +233,7 @@ class MainScene: SKScene
         {
         default:
             
-            let morty = SwipeTargetMorty(image: MainScene.selectRandomImage(fromImages: SwipeTargetMorty.mortyImages), color: SKColor.clear, size: CGSize(width: 100, height: 100), launchTime: self.currentTime + 1)
-            morty.position = CGPoint(x: 0, y: -0.5 * (self.size.height + morty.size.height))
-            
-            return [morty]
+            return []
         }
     }
     
@@ -227,12 +254,16 @@ class MainScene: SKScene
     //TODO: We won the game.
     func gameWon()
     {
-        print("Game won!")
+        self.label.isHidden = false
+        self.label.text = "You won!"
+        self.label.fontColor = SKColor.green
     }
     
     //TODO: We lost the game.
     func gameLost(byBlowUp blowUp: Bool)
     {
-        print("Game lost!")
+        self.label.isHidden = false
+        self.label.text = "Game over"
+        self.label.fontColor = SKColor.red
     }
 }

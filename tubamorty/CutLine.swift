@@ -26,7 +26,7 @@ class CutLine: SKShapeNode
         return sqrt(pow(Double(point1.x - point2.x), 2) + pow(Double(point1.y - point2.y), 2))
     }
     
-    func draw(inScene scene: SKScene)
+    func drawPath()
     {
         //Specify the path:
         let path = CGMutablePath()
@@ -43,14 +43,8 @@ class CutLine: SKShapeNode
             }
         }
         
-        //Leave the scene:
-        self.removeFromParent()
-        
         //Apply to shape node:
         self.path = path
-        
-        //Re-add to scene:
-        scene.addChild(self)
     }
     
     //Return the new interpolated cut line points:

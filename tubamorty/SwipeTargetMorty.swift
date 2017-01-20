@@ -10,15 +10,8 @@ import SpriteKit
 
 class SwipeTargetMorty: SwipeTarget
 {
-    public static let mortyImages = (1...15).map({ return UIImage(named: "M\($0)")! })
+    //Load the Morty textures into an array:
+    static let mortyImages = (1...15).map({ return UIImage(named: "M\($0)")! })
     
-    override func didLaunch() -> SKPhysicsBody
-    {
-        let physics = SKPhysicsBody(circleOfRadius: 0.5 * self.size.height)
-        
-        physics.affectedByGravity = true
-        physics.velocity = CGVector(dx: 0, dy: 1500)
-        
-        return physics
-    }
+    //TODO: Override some methods.
 }
