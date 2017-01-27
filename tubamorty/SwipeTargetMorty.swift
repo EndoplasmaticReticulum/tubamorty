@@ -2,16 +2,24 @@
 //  SwipeTargetMorty.swift
 //  tubamorty
 //
-//  Created by Jonas Treumer on 19.01.17.
+//  Created by Jonas Treumer on 27.01.17.
 //  Copyright © 2017 TU Bergakademie Freiberg. All rights reserved.
 //
 
 import SpriteKit
 
-class SwipeTargetMorty: SwipeTarget
+class SwipeTargetMorty: SwipeTargetRandomized
 {
     //Load the Morty textures into an array:
     static let mortyImages = (1...15).map({ return UIImage(named: "M\($0)")! })
     
-    //TODO: Override some methods.
+    override func didLaunch() -> SKPhysicsBody
+    {
+        let physics = super.didLaunch()
+        
+        physics.categoryBitMask = PhysicsCategory.Morty
+        physics.collisionBitMask = PhysicsCategory.Wall | PhysicsCategory.Bomb
+        
+        return physics
+    }
 }

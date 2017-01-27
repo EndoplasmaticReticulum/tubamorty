@@ -12,4 +12,6 @@ class PhysicsCategory
 {
     static let None: UInt32 = 0
     static let Wall: UInt32 = 1
+    static let Morty: UInt32 = 2
+    static let Bomb: UInt32 = 4
 }

@@ -6,9 +6,10 @@
 //  Copyright © 2017 TU Bergakademie Freiberg. All rights reserved.
 //
 
+import AVFoundation
 import SpriteKit
 
-class MainScene: SKScene
+class MainScene: SKScene, AVAudioPlayerDelegate
 {
     //Have we already done the initialization?
     private var isInitialized = false
@@ -45,6 +46,9 @@ class MainScene: SKScene
     
     //Is the game currently running?
     private var gamePaused = false
+    
+    //A reference to an audio player:
+    private var audioPlayer: AVAudioPlayer!
     
     private class func selectRandomImage(fromImages images: [UIImage]) -> UIImage
     {
@@ -99,6 +103,9 @@ class MainScene: SKScene
         self.cutLine.lineCap = .round
         
         self.addChild(self.cutLine)
+        
+        //Set gravity:
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         
         //We are done:
         self.isInitialized = true
@@ -264,13 +271,25 @@ class MainScene: SKScene
     //TODO: Manage the waves.
     func spawnWave() -> [SwipeTarget]
     {
-        //Switch over self.waveCounter. It starts with 1.
-        switch self.waveCounter
+        let mortys: [SwipeTarget] = (0..<((self.waveCounter / 3) + 1)).map()
         {
-        default:
+            _ in
             
-            return []
+            SwipeTargetMorty(image: MainScene.selectRandomImage(fromImages: SwipeTargetMorty.mortyImages), color: SKColor.clear, size: CGSize(width: 100, height: 100), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -400 + CGFloat(arc4random_uniform(800)), dy: CGFloat(1000 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)
         }
+        
+        let linclers: [SwipeTarget] = (0..<(self.waveCounter / 5)).map()
+        {
+            _ in
+            
+            let lincler = SwipeTargetBomb(image: UIImage(named: "Lincler")!, color: SKColor.clear, size: CGSize(width: 150, height: 260), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -400 + CGFloat(arc4random_uniform(800)), dy: CGFloat(1000 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)
+            
+            lincler.lifesLostOnSurvival = 0
+            
+            return lincler
+        }
+        
+        return mortys + linclers
     }
     
     //TODO: A swipe target has survived.
@@ -285,6 +304,10 @@ class MainScene: SKScene
     {
         //Grant some points to the player.
         //Or blow him/her up by setting self.blownUp.
+        if swipeTarget is SwipeTargetBomb
+        {
+            self.blownUp = true
+        }
     }
     
     //TODO: We won the game.
@@ -301,5 +324,11 @@ class MainScene: SKScene
         self.label.isHidden = false
         self.label.text = "Game over"
         self.label.fontColor = SKColor.red
+        
+        //Scream:
+        let soundURL = URL(fileURLWithPath: Bundle.main.path(forResource: "Scream", ofType: "mp3")!)
+        
+        self.audioPlayer = try! AVAudioPlayer(contentsOf: soundURL)
+        self.audioPlayer.play()
     }
 }
