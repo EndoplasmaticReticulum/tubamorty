@@ -176,6 +176,17 @@ class MainScene: SKScene, AVAudioPlayerDelegate
             return
         }
         
+        //Did we lose all lives or blow up?
+        if (self.lifeCounter == 0) || self.blownUp
+        {
+            self.targets.forEach({ $0.removeFromParent() })
+            self.targets.removeAll()
+            self.gamePaused = true
+            gameLost(byBlowUp: self.blownUp)
+            
+            return
+        }
+        
         //Are we done with the wave?
         if self.targets.count == 0
         {
@@ -194,17 +205,6 @@ class MainScene: SKScene, AVAudioPlayerDelegate
                 
                 return
             }
-        }
-        
-        //Did we lose all lives or blow up?
-        if (self.lifeCounter == 0) || self.blownUp
-        {
-            self.targets.forEach({ $0.removeFromParent() })
-            self.targets.removeAll()
-            self.gamePaused = true
-            gameLost(byBlowUp: self.blownUp)
-            
-            return
         }
         
         //Update all the targets:
@@ -332,3 +332,11 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.audioPlayer.play()
     }
 }
+
+
+
+
+
+
+
+
