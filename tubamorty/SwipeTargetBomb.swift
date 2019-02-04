@@ -14,9 +14,14 @@ class SwipeTargetBomb: SwipeTargetRandomized
     {
         let physics = super.didLaunch()
         
-        physics.categoryBitMask = PhysicsCategory.Bomb
-        physics.collisionBitMask = PhysicsCategory.Wall | PhysicsCategory.Morty
+        physics.categoryBitMask = PhysicsCategory.Special
+        physics.collisionBitMask = PhysicsCategory.Wall | PhysicsCategory.Normal
         
         return physics
+    }
+    
+    override func handleKill() -> SwipeTargetKillAction
+    {
+        return .blowUp
     }
 }

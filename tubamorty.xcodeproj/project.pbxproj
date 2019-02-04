@@ -33,6 +33,8 @@
 		A86BA8EB1E2FA8B700F481F2 /* SwipeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BA8EA1E2FA8B700F481F2 /* SwipeTarget.swift */; };
 		A87C7F2E1E30EFF700752723 /* CutLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C7F2D1E30EFF700752723 /* CutLine.swift */; };
 		A87C7F331E3111D900752723 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C7F321E3111D900752723 /* PhysicsCategory.swift */; };
+		A8BF1C5C22089E4400180A7B /* Pickle.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BF1C5B22089E4400180A7B /* Pickle.png */; };
+		A8BF1C5E2208A39600180A7B /* SwipeTargetPickle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF1C5D2208A39600180A7B /* SwipeTargetPickle.swift */; };
 		A8EAF7FE1E3B42A0007AFF84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EAF7FD1E3B42A0007AFF84 /* AVFoundation.framework */; };
 		A8EAF8011E3B43C5007AFF84 /* Scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8EAF8001E3B43C5007AFF84 /* Scream.mp3 */; };
 		A8EAF8031E3B497F007AFF84 /* SwipeTargetBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAF8021E3B497F007AFF84 /* SwipeTargetBomb.swift */; };
@@ -69,6 +71,8 @@
 		A86BA8EA1E2FA8B700F481F2 /* SwipeTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTarget.swift; sourceTree = "<group>"; };
 		A87C7F2D1E30EFF700752723 /* CutLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutLine.swift; sourceTree = "<group>"; };
 		A87C7F321E3111D900752723 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		A8BF1C5B22089E4400180A7B /* Pickle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pickle.png; path = Textures/Pickle.png; sourceTree = "<group>"; };
+		A8BF1C5D2208A39600180A7B /* SwipeTargetPickle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTargetPickle.swift; sourceTree = "<group>"; };
 		A8EAF7FD1E3B42A0007AFF84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8EAF8001E3B43C5007AFF84 /* Scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Scream.mp3; path = Sounds/Scream.mp3; sourceTree = "<group>"; };
 		A8EAF8021E3B497F007AFF84 /* SwipeTargetBomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTargetBomb.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		A86BA8F11E2FBC2C00F481F2 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				A8BF1C5B22089E4400180A7B /* Pickle.png */,
 				A82EECE71E3171650052E25C /* Background.png */,
 				A8EAF8061E3B4BEB007AFF84 /* Lincler.png */,
 				A82836381E315D1A009902D2 /* Morty */,
@@ -162,6 +167,7 @@
 				A82836181E31200F009902D2 /* SwipeTargetRandomized.swift */,
 				A8EAF8041E3B49E6007AFF84 /* SwipeTargetMorty.swift */,
 				A8EAF8021E3B497F007AFF84 /* SwipeTargetBomb.swift */,
+				A8BF1C5D2208A39600180A7B /* SwipeTargetPickle.swift */,
 			);
 			name = "Swipe Targets";
 			sourceTree = "<group>";
@@ -234,12 +240,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "TU Bergakademie Freiberg";
 				TargetAttributes = {
 					A86BA8CA1E2FA38900F481F2 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 76MM9LH8FK;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -286,6 +293,7 @@
 				A828362B1E315D16009902D2 /* M3.png in Resources */,
 				A82836371E315D16009902D2 /* M15.png in Resources */,
 				A8EAF8071E3B4BEB007AFF84 /* Lincler.png in Resources */,
+				A8BF1C5C22089E4400180A7B /* Pickle.png in Resources */,
 				A86BA8DF1E2FA38900F481F2 /* LaunchScreen.storyboard in Resources */,
 				A82836291E315D16009902D2 /* M1.png in Resources */,
 			);
@@ -299,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A82836191E31200F009902D2 /* SwipeTargetRandomized.swift in Sources */,
+				A8BF1C5E2208A39600180A7B /* SwipeTargetPickle.swift in Sources */,
 				A86BA8E91E2FA4C700F481F2 /* MainScene.swift in Sources */,
 				A8EAF8051E3B49E6007AFF84 /* SwipeTargetMorty.swift in Sources */,
 				A87C7F2E1E30EFF700752723 /* CutLine.swift in Sources */,
@@ -341,15 +350,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -391,15 +408,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -435,7 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TUBAF.tubamorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -450,7 +475,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TUBAF.tubamorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

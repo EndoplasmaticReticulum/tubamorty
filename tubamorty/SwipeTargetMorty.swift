@@ -17,9 +17,14 @@ class SwipeTargetMorty: SwipeTargetRandomized
     {
         let physics = super.didLaunch()
         
-        physics.categoryBitMask = PhysicsCategory.Morty
-        physics.collisionBitMask = PhysicsCategory.Wall | PhysicsCategory.Bomb
+        physics.categoryBitMask = PhysicsCategory.Normal
+        physics.collisionBitMask = PhysicsCategory.Wall | PhysicsCategory.Special
         
         return physics
+    }
+    
+    override func handleSurvival() -> SwipeTargetSurvivalAction
+    {
+        return .lifeLost
     }
 }

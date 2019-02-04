@@ -19,6 +19,22 @@ enum SwipeTargetLifeState
     case killed //Has been killed
 }
 
+//What happens if a target survives?
+enum SwipeTargetSurvivalAction
+{
+    case nothing
+    case lifeLost
+}
+
+//What happens if we kill a target?
+enum SwipeTargetKillAction
+{
+    case nothing
+    case lifeGained
+    case lifeLost
+    case blowUp
+}
+
 //A target on the screen that can be influenced by a swipe:
 class SwipeTarget: SKSpriteNode
 {
@@ -29,10 +45,7 @@ class SwipeTarget: SKSpriteNode
     private let launchTime: TimeInterval
     
     //Life state of this target:
-    private var lifeState = SwipeTargetLifeState.sleeping
-    
-    //How many lifes are lost if the target survives?
-    var lifesLostOnSurvival = 1
+    private(set) var lifeState = SwipeTargetLifeState.sleeping
     
     init(image: UIImage, color: SKColor, size: CGSize, launchTime: TimeInterval)
     {
@@ -98,7 +111,7 @@ class SwipeTarget: SKSpriteNode
         }
     }
     
-    func update(_ currentTime: TimeInterval, withSceneSize sceneSize: CGSize) -> SwipeTargetLifeState
+    func update(_ currentTime: TimeInterval, withSceneSize sceneSize: CGSize)
     {
         //Is the target still sleeping?
         if self.lifeState == .sleeping
@@ -110,7 +123,7 @@ class SwipeTarget: SKSpriteNode
             }
             else
             {
-                return .sleeping
+                return
             }
         }
         
@@ -118,7 +131,7 @@ class SwipeTarget: SKSpriteNode
         //Are we already killed?
         if self.lifeState == .killed
         {
-            return .killed
+            return
         }
         
         //Check bottom.
@@ -126,11 +139,10 @@ class SwipeTarget: SKSpriteNode
         if (self.position.y < (-0.5 * (sceneSize.height + self.size.height + SwipeTarget.bottomTolerance)))
         {
             self.lifeState = .survived
-            return .survived
         }
         
         //One of the intermediate alive states:
-        return self.lifeState
+        //Nothing to do.
     }
     
     //For overriding:
@@ -150,5 +162,19 @@ class SwipeTarget: SKSpriteNode
     {
         //Default is a kill:
         return true
+    }
+    
+    //For overriding:
+    func handleSurvival() -> SwipeTargetSurvivalAction
+    {
+        //Default is nothing:
+        return .nothing
+    }
+    
+    //For overriding:
+    func handleKill() -> SwipeTargetKillAction
+    {
+        //Default is nothing:
+        return .nothing
     }
 }

@@ -28,6 +28,9 @@ class MainScene: SKScene, AVAudioPlayerDelegate
     private let rightWall = SKNode()
     private let topWall = SKNode()
     
+    //The lives:
+    private var lifes = [SKSpriteNode]()
+    
     //The cut line:
     private let cutLine = CutLine()
     
@@ -36,9 +39,6 @@ class MainScene: SKScene, AVAudioPlayerDelegate
     
     //In which wave are we currently?
     private var waveCounter = 0
-    
-    //How many lifes do we have left?
-    private var lifeCounter = 3
     
     //Did we blow up?
     //That's a safe death, no chance to collect some lifes on the fly:
@@ -111,6 +111,25 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.isInitialized = true
     }
     
+    private func addLife()
+    {
+        //Create the sprite:
+        let lifeNode = SKSpriteNode(imageNamed: "Pickle")
+        
+        lifeNode.size = CGSize(width: 40, height: 40)
+        lifeNode.position = CGPoint(x: (0.5 * self.size.width) - CGFloat(50 * self.lifes.count) - 25 - 5, y: (0.5 * self.size.height) - 25)
+        
+        //Append and spawn it:
+        self.lifes.append(lifeNode)
+        addChild(lifeNode)
+    }
+    
+    private func removeLife()
+    {
+        //Remove the node:
+        self.lifes.popLast()?.removeFromParent()
+    }
+    
     private func processHits(atPoints points: [CGPoint])
     {
         //Process the points:
@@ -132,6 +151,12 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         
         //Set background size:
         self.background.size = self.size
+        
+        //Add lifes:
+        for _ in 0..<3
+        {
+            addLife()
+        }
         
         //Set walls:
         //Left:
@@ -177,7 +202,7 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         }
         
         //Did we lose all lives or blow up?
-        if (self.lifeCounter == 0) || self.blownUp
+        if (self.lifes.count == 0) || self.blownUp
         {
             self.targets.forEach({ $0.removeFromParent() })
             self.targets.removeAll()
@@ -211,16 +236,25 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.targets = self.targets.filter()
         {
             //Update the target:
-            switch $0.update(currentTime, withSceneSize: self.size)
+            $0.update(currentTime, withSceneSize: self.size)
+            
+            switch $0.lifeState
             {
             case .survived:
                 
                 //Remove the target from the scene and invoke the callback:
                 $0.removeFromParent()
-                targetSurvived($0)
                 
-                //Reduce the life:
-                self.lifeCounter = max(0, self.lifeCounter - $0.lifesLostOnSurvival)
+                //Determine the survival action:
+                switch $0.handleSurvival()
+                {
+                case .lifeLost:
+                    
+                    //Reduce the life:
+                    removeLife()
+                    
+                default: break
+                }
                 
                 //Remove from array:
                 return false
@@ -229,7 +263,16 @@ class MainScene: SKScene, AVAudioPlayerDelegate
                 
                 //Remove the target from the scene and invoke the callback:
                 $0.removeFromParent()
-                targetKilled($0)
+                
+                //Determine the kill action:
+                switch $0.handleKill()
+                {
+                case .lifeGained: addLife()
+                case .lifeLost: removeLife()
+                case .blowUp: self.blownUp = true
+                    
+                default: break
+                }
                 
                 //Remove from array:
                 return false
@@ -284,30 +327,20 @@ class MainScene: SKScene, AVAudioPlayerDelegate
             
             let lincler = SwipeTargetBomb(image: UIImage(named: "Lincler")!, color: SKColor.clear, size: CGSize(width: 150, height: 260), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -400 + CGFloat(arc4random_uniform(800)), dy: CGFloat(1000 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)
             
-            lincler.lifesLostOnSurvival = 0
-            
             return lincler
         }
         
-        return mortys + linclers
-    }
-    
-    //TODO: A swipe target has survived.
-    func targetSurvived(_ swipeTarget: SwipeTarget)
-    {
-        //swipeTarget.lifesLostOnSurvival determines the number of lifes that will be lost.
-        //It is subtracted after this call.
-    }
-    
-    //TODO: A swipe target has been killed.
-    func targetKilled(_ swipeTarget: SwipeTarget)
-    {
-        //Grant some points to the player.
-        //Or blow him/her up by setting self.blownUp.
-        if swipeTarget is SwipeTargetBomb
+        let pickles: [SwipeTarget] =
         {
-            self.blownUp = true
-        }
+            guard (self.waveCounter % 6) == 0 else
+            {
+                return []
+            }
+            
+            return [SwipeTargetPickle(image: UIImage(named: "Pickle")!, color: SKColor.clear, size: CGSize(width: 50, height: 66), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -600 + CGFloat(arc4random_uniform(1200)), dy: CGFloat(1500 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)]
+        }()
+        
+        return mortys + linclers + pickles
     }
     
     //TODO: We won the game.
@@ -332,11 +365,3 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.audioPlayer.play()
     }
 }
-
-
-
-
-
-
-
-
