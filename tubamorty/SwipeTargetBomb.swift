@@ -10,6 +10,8 @@ import SpriteKit
 
 class SwipeTargetBomb: SwipeTargetRandomized
 {
+    static let linclerImage = UIImage(named: "Lincler")!
+    
     override func didLaunch() -> SKPhysicsBody
     {
         let physics = super.didLaunch()

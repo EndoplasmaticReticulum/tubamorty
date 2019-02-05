@@ -49,6 +49,7 @@ class MainScene: SKScene, AVAudioPlayerDelegate
     
     //A reference to an audio player:
     private var audioPlayer: AVAudioPlayer!
+    private let audioQueue = DispatchQueue(label: "audio")
     
     //Emitters:
     private let emitters =
@@ -138,14 +139,17 @@ class MainScene: SKScene, AVAudioPlayerDelegate
     
     private func playAudio(named name: String)
     {
-        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else
+        audioQueue.async
         {
-            print("Failed to play audio file named \"\(name).mp3\".")
-            return
+            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else
+            {
+                print("Failed to play audio file named \"\(name).mp3\".")
+                return
+            }
+            
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            self.audioPlayer.play()
         }
-        
-        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-        self.audioPlayer.play()
     }
     
     private func spawnEmitter(named name: String, at position: CGPoint, for interval: TimeInterval)
@@ -367,7 +371,7 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         {
             _ in
             
-            let lincler = SwipeTargetBomb(image: UIImage(named: "Lincler")!, color: SKColor.clear, size: CGSize(width: 150, height: 260), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -400 + CGFloat(arc4random_uniform(800)), dy: CGFloat(1000 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)
+            let lincler = SwipeTargetBomb(image: SwipeTargetBomb.linclerImage, color: SKColor.clear, size: CGSize(width: 150, height: 260), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -400 + CGFloat(arc4random_uniform(800)), dy: CGFloat(1000 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)
             
             return lincler
         }
@@ -379,7 +383,7 @@ class MainScene: SKScene, AVAudioPlayerDelegate
                 return []
             }
             
-            return [SwipeTargetPickle(image: UIImage(named: "Pickle")!, color: SKColor.clear, size: CGSize(width: 50, height: 66), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -600 + CGFloat(arc4random_uniform(1200)), dy: CGFloat(1500 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)]
+            return [SwipeTargetPickle(image: SwipeTargetPickle.pickleImage, color: SKColor.clear, size: CGSize(width: 50, height: 66), launchTime: self.currentTime + 3, screenSize: self.size, velocity: CGVector(dx: -600 + CGFloat(arc4random_uniform(1200)), dy: CGFloat(1500 + arc4random_uniform(1000))), angularVelocity: CGFloat(arc4random_uniform(100)) / 100.0)]
         }()
         
         return mortys + linclers + pickles

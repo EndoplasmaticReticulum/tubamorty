@@ -10,6 +10,8 @@ import SpriteKit
 
 class SwipeTargetPickle: SwipeTargetRandomized
 {
+    static let pickleImage = UIImage(named: "Pickle")!
+    
     override func didLaunch() -> SKPhysicsBody
     {
         let physics = super.didLaunch()
