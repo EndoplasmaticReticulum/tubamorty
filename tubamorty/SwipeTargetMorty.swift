@@ -23,8 +23,13 @@ class SwipeTargetMorty: SwipeTargetRandomized
         return physics
     }
     
-    override func handleSurvival() -> SwipeTargetSurvivalAction
+    override func handleSurvival() -> [SwipeTargetAction]
     {
-        return .lifeLost
+        return [.lifeLost]
+    }
+    
+    override func handleKill() -> [SwipeTargetAction]
+    {
+        return [.spawnEmitter("Explosion", self.position, 0.3)]
     }
 }

@@ -19,20 +19,14 @@ enum SwipeTargetLifeState
     case killed //Has been killed
 }
 
-//What happens if a target survives?
-enum SwipeTargetSurvivalAction
+//Actions that can be triggered:
+enum SwipeTargetAction
 {
-    case nothing
-    case lifeLost
-}
-
-//What happens if we kill a target?
-enum SwipeTargetKillAction
-{
-    case nothing
     case lifeGained
     case lifeLost
     case blowUp
+    case playAudio(String)
+    case spawnEmitter(String, CGPoint, TimeInterval)
 }
 
 //A target on the screen that can be influenced by a swipe:
@@ -165,16 +159,16 @@ class SwipeTarget: SKSpriteNode
     }
     
     //For overriding:
-    func handleSurvival() -> SwipeTargetSurvivalAction
+    func handleSurvival() -> [SwipeTargetAction]
     {
         //Default is nothing:
-        return .nothing
+        return []
     }
     
     //For overriding:
-    func handleKill() -> SwipeTargetKillAction
+    func handleKill() -> [SwipeTargetAction]
     {
         //Default is nothing:
-        return .nothing
+        return []
     }
 }

@@ -20,8 +20,8 @@ class SwipeTargetPickle: SwipeTargetRandomized
         return physics
     }
     
-    override func handleKill() -> SwipeTargetKillAction
+    override func handleKill() -> [SwipeTargetAction]
     {
-        return .lifeGained
+        return [.lifeGained, .playAudio("PickleRick")]
     }
 }

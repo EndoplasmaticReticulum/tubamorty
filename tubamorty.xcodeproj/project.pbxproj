@@ -40,6 +40,8 @@
 		A8EAF8031E3B497F007AFF84 /* SwipeTargetBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAF8021E3B497F007AFF84 /* SwipeTargetBomb.swift */; };
 		A8EAF8051E3B49E6007AFF84 /* SwipeTargetMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EAF8041E3B49E6007AFF84 /* SwipeTargetMorty.swift */; };
 		A8EAF8071E3B4BEB007AFF84 /* Lincler.png in Resources */ = {isa = PBXBuildFile; fileRef = A8EAF8061E3B4BEB007AFF84 /* Lincler.png */; };
+		A8FF414B2209DC8500CA5BC3 /* PickleRick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8FF414A2209DC8500CA5BC3 /* PickleRick.mp3 */; };
+		A8FF414E2209E02B00CA5BC3 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = A8FF414D2209E02B00CA5BC3 /* Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		A8EAF8021E3B497F007AFF84 /* SwipeTargetBomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTargetBomb.swift; sourceTree = "<group>"; };
 		A8EAF8041E3B49E6007AFF84 /* SwipeTargetMorty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTargetMorty.swift; sourceTree = "<group>"; };
 		A8EAF8061E3B4BEB007AFF84 /* Lincler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Lincler.png; path = Textures/Lincler.png; sourceTree = "<group>"; };
+		A8FF414A2209DC8500CA5BC3 /* PickleRick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = PickleRick.mp3; path = Sounds/PickleRick.mp3; sourceTree = "<group>"; };
+		A8FF414D2209E02B00CA5BC3 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Explosion.sks; path = Effects/Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				A87C7F2B1E30E9BA00752723 /* Storyboards */,
 				A86BA8F11E2FBC2C00F481F2 /* Textures */,
 				A8EAF7FF1E3B42A6007AFF84 /* Sounds */,
+				A8FF414C2209E01C00CA5BC3 /* Effects */,
 			);
 			path = tubamorty;
 			sourceTree = "<group>";
@@ -209,8 +214,17 @@
 			isa = PBXGroup;
 			children = (
 				A8EAF8001E3B43C5007AFF84 /* Scream.mp3 */,
+				A8FF414A2209DC8500CA5BC3 /* PickleRick.mp3 */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		A8FF414C2209E01C00CA5BC3 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF414D2209E02B00CA5BC3 /* Explosion.sks */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +293,7 @@
 				A82836331E315D16009902D2 /* M11.png in Resources */,
 				A86BA8DA1E2FA38900F481F2 /* Main.storyboard in Resources */,
 				A82836321E315D16009902D2 /* M10.png in Resources */,
+				A8FF414E2209E02B00CA5BC3 /* Explosion.sks in Resources */,
 				A86BA8DC1E2FA38900F481F2 /* Assets.xcassets in Resources */,
 				A82836311E315D16009902D2 /* M9.png in Resources */,
 				A828362E1E315D16009902D2 /* M6.png in Resources */,
@@ -288,6 +303,7 @@
 				A82836301E315D16009902D2 /* M8.png in Resources */,
 				A82836351E315D16009902D2 /* M13.png in Resources */,
 				A82836361E315D16009902D2 /* M14.png in Resources */,
+				A8FF414B2209DC8500CA5BC3 /* PickleRick.mp3 in Resources */,
 				A828362C1E315D16009902D2 /* M4.png in Resources */,
 				A8EAF8011E3B43C5007AFF84 /* Scream.mp3 in Resources */,
 				A828362B1E315D16009902D2 /* M3.png in Resources */,

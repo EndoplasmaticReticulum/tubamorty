@@ -20,8 +20,8 @@ class SwipeTargetBomb: SwipeTargetRandomized
         return physics
     }
     
-    override func handleKill() -> SwipeTargetKillAction
+    override func handleKill() -> [SwipeTargetAction]
     {
-        return .blowUp
+        return [.blowUp]
     }
 }

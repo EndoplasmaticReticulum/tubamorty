@@ -50,6 +50,12 @@ class MainScene: SKScene, AVAudioPlayerDelegate
     //A reference to an audio player:
     private var audioPlayer: AVAudioPlayer!
     
+    //Emitters:
+    private let emitters =
+    [
+        "Explosion": SKEmitterNode(fileNamed: "Explosion")!
+    ]
+    
     private class func selectRandomImage(fromImages images: [UIImage]) -> UIImage
     {
         return images[Int(arc4random_uniform(UInt32(images.count)))]
@@ -130,6 +136,45 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.lifes.popLast()?.removeFromParent()
     }
     
+    private func playAudio(named name: String)
+    {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else
+        {
+            print("Failed to play audio file named \"\(name).mp3\".")
+            return
+        }
+        
+        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+        self.audioPlayer.play()
+    }
+    
+    private func spawnEmitter(named name: String, at position: CGPoint, for interval: TimeInterval)
+    {
+        //Get the corresponding emitter node:
+        guard let emitterNode = self.emitters[name] else
+        {
+            print("Failed to add emitter file named \"\(name).sks\".")
+            return
+        }
+        
+        //Copy the node and position it:
+        let newEmitterNode = emitterNode.copy() as! SKEmitterNode
+        newEmitterNode.position = position
+        
+        //Add and spawn it:
+        addChild(newEmitterNode)
+        
+        newEmitterNode.run(SKAction.sequence([]))
+        {
+            newEmitterNode.particleBirthRate = 0
+            SKAction.wait(forDuration: 0.1)
+            SKAction.run
+            {
+                newEmitterNode.removeFromParent()
+            }
+        }
+    }
+    
     private func processHits(atPoints points: [CGPoint])
     {
         //Process the points:
@@ -137,6 +182,21 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         {
             //Try to hit:
             self.targets.forEach({ $0.tryHit(withPoint: point) })
+        }
+    }
+    
+    private func handleActions(_ actions: [SwipeTargetAction])
+    {
+        actions.forEach
+        {
+            switch $0
+            {
+            case .lifeGained: addLife()
+            case .lifeLost: removeLife()
+            case .blowUp: self.blownUp = true
+            case let .playAudio(name): playAudio(named: name)
+            case let .spawnEmitter(name, position, time): spawnEmitter(named: name, at: position, for: time)
+            }
         }
     }
     
@@ -245,16 +305,8 @@ class MainScene: SKScene, AVAudioPlayerDelegate
                 //Remove the target from the scene and invoke the callback:
                 $0.removeFromParent()
                 
-                //Determine the survival action:
-                switch $0.handleSurvival()
-                {
-                case .lifeLost:
-                    
-                    //Reduce the life:
-                    removeLife()
-                    
-                default: break
-                }
+                //Handle the survival actions:
+                handleActions($0.handleSurvival())
                 
                 //Remove from array:
                 return false
@@ -264,15 +316,8 @@ class MainScene: SKScene, AVAudioPlayerDelegate
                 //Remove the target from the scene and invoke the callback:
                 $0.removeFromParent()
                 
-                //Determine the kill action:
-                switch $0.handleKill()
-                {
-                case .lifeGained: addLife()
-                case .lifeLost: removeLife()
-                case .blowUp: self.blownUp = true
-                    
-                default: break
-                }
+                //Handle the kill actions:
+                handleActions($0.handleKill())
                 
                 //Remove from array:
                 return false
@@ -303,9 +348,6 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         //Cancel the hits:
         self.targets.forEach({ $0.cancelHit() })
     }
-    
-    
-    
     
     //*******************
     //*** Start here! ***
@@ -359,9 +401,6 @@ class MainScene: SKScene, AVAudioPlayerDelegate
         self.label.fontColor = SKColor.red
         
         //Scream:
-        let soundURL = URL(fileURLWithPath: Bundle.main.path(forResource: "Scream", ofType: "mp3")!)
-        
-        self.audioPlayer = try! AVAudioPlayer(contentsOf: soundURL)
-        self.audioPlayer.play()
+        playAudio(named: "Scream")
     }
 }
